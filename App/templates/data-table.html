@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    * { font-family: Calibri; font-size: 20px; }
+    table, th, td {
+      border: solid 1px #ddd;
+      border-collapse: collapse;
+      padding: 2px 3px;
+      text-align: center;
+    }
+    th {
+      font-weight:bold;
+    }
+    p { padding: 10px 0; }
+  </style>
+</head>
+<body>
+ 
+  <input type='button' onclick='extractData()' 
+         value='Extract data' />
+
+  <p id='showData'></p>
+  <p id='msg'></p>
+  
+
+</body>
+
+<script>
+  let extractData = () => {
+    // the json data.
+    const resultData = [
+      {
+"Article":"article1.txt",
+"ESG Category": "Environment",
+"Nature of Impact/PI":"",
+"Severity":"",
+"Company Name":"Company_1"
+},
+    {
+"Article":"article1.txt",
+"ESG Category": "Environment",
+"Nature of Impact/PI":"",
+"Severity":"",
+"Company Name":"Company_1"
+},
+    {
+"Article":"article1.txt",
+"ESG Category": "Environment",
+"Nature of Impact/PI":"",
+"Severity":"",
+"Company Name":"Company_1"
+},
+    {
+"Article":"article1.txt",
+"ESG Category": "Environment",
+"Nature of Impact/PI":"",
+"Severity":"",
+"Company Name":"Company_1"
+},
+    {
+"Article":"article1.txt",
+"ESG Category": "Environment",
+"Nature of Impact/PI":"",
+"Severity":"",
+"Company Name":"Company_1"
+},
+    {
+"Article":"article1.txt",
+"ESG Category": "Environment",
+"Nature of Impact/PI":"",
+"Severity":"",
+"Company Name":"Company_1"
+}
+    ]
+
+
+    let col = [];
+    for (let i = 0; i < resultData.length; i++) {
+      for (let key in resultData[i]) {
+        if (col.indexOf(key) === -1) {
+          col.push(key);
+        }
+      }
+    }
+
+    // Create a table.
+    const table = document.createElement("table");
+
+
+    let tr = table.insertRow(-1);                  
+
+    for (let i = 0; i < col.length; i++) {
+      let th = document.createElement("th");      
+      th.innerHTML = col[i];
+      tr.appendChild(th);
+    }
+
+ 
+    for (let i = 0; i < resultData.length; i++) {
+
+      tr = table.insertRow(-1);
+
+      for (let j = 0; j < col.length; j++) {
+        let tabCell = tr.insertCell(-1);
+        tabCell.innerHTML = resultData[i][col[j]];
+      }
+    }
+
+    const divShowData = document.getElementById('showData');
+    divShowData.innerHTML = "";
+    divShowData.appendChild(table);
+    
+
+  }
+</script>
+</html>
